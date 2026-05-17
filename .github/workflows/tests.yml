@@ -9,11 +9,12 @@ on:
 permissions:
   contents: write
   pages: write
-  pull-requests: write
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout código
@@ -35,17 +36,12 @@ jobs:
 
       - name: Gerar relatório Allure
         if: always()
-        uses: Xotabu4/allure-report-action@v2
-        with:
-          allure_results: target/allure-results
-          allure_history: allure-history
-          keep_reports: 20
+        run: mvn -B allure:report
 
       - name: Publicar relatório Allure no GitHub Pages
-        if: always()
+        if: always() && github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report
-          cname: ''
+          publish_dir: target/site/allure-maven-plugin
 
