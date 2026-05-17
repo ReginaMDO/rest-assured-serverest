@@ -1,0 +1,32 @@
+<div>POST to https://serverest.dev/produtos</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;nome&quot;: &quot;Product_e5dea096&quot;,
+    &quot;preco&quot;: 150,
+    &quot;descricao&quot;: &quot;Description create test&quot;,
+    &quot;quantidade&quot;: 5
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzc5MDQ3MzU0LCJleHAiOjE3NzkwNDc5NTR9.qwUUt9qguXC_N_bfM2cucodgYtBiBjAMeQQ5tU1twUA</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://serverest.dev/produtos&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6InRlc3RlIiwiaWF0IjoxNzc5MDQ3MzU0LCJleHAiOjE3NzkwNDc5NTR9.qwUUt9qguXC_N_bfM2cucodgYtBiBjAMeQQ5tU1twUA&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;nome&quot;: &quot;Product_e5dea096&quot;,
+    &quot;preco&quot;: 150,
+    &quot;descricao&quot;: &quot;Description create test&quot;,
+    &quot;quantidade&quot;: 5
+}&#39;
+    </div>
+
