@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main, master ]
 
+permissions:
+  contents: write
+  pages: write
+  pull-requests: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -26,13 +31,15 @@ jobs:
           BASE_URL: ${{ secrets.BASE_URL }}
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-        run: mvn test
+        run: mvn clean test
 
       - name: Gerar relatório Allure
         if: always()
-        uses: simple-elf/allure-report-action@v1
+        uses: Xotabu4/allure-report-action@v2
         with:
           allure_results: target/allure-results
+          allure_history: allure-history
+          keep_reports: 20
 
       - name: Publicar relatório Allure no GitHub Pages
         if: always()
@@ -40,3 +47,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-report
+          cname: ''
+
